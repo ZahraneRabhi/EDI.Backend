@@ -1,6 +1,7 @@
 ﻿using EDI.Backend.Contracts;
 using EDI.Backend.Data;
 using EDI.Backend.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace EDI.Backend.Repositories
 {
@@ -10,29 +11,29 @@ namespace EDI.Backend.Repositories
         {
         }
 
-        public Task<IReadOnlyCollection<DocumentBonCommande>> GetByDocDateAsync(DateTime docDate)
+        public async Task<IReadOnlyCollection<DocumentBonCommande>> GetByDocDateAsync(DateTime docDate)
         {
-            throw new NotImplementedException();
+            return await _context.DocumentBonCommandes.Where(dbc => dbc.DocDate == docDate).ToListAsync();
         }
 
-        public Task<IReadOnlyCollection<DocumentBonCommande>> GetByDocDestAsync(string docDest)
+        public async Task<IReadOnlyCollection<DocumentBonCommande>> GetByDocDestAsync(string docDest)
         {
-            throw new NotImplementedException();
+            return await _context.DocumentBonCommandes.Where(dbc => dbc.DocDest == docDest).ToListAsync();
         }
 
-        public Task<IReadOnlyCollection<DocumentBonCommande>> GetByDocRefAsync(string docRef)
+        public async Task<IReadOnlyCollection<DocumentBonCommande>> GetByDocRefAsync(string docRef)
         {
-            throw new NotImplementedException();
+            return await _context.DocumentBonCommandes.Where(dbc => dbc.DocRef == docRef).ToListAsync();
         }
 
-        public Task<IReadOnlyCollection<DocumentBonCommande>> GetByDocTiersAsync(string docTiers)
+        public async Task<IReadOnlyCollection<DocumentBonCommande>> GetByDocTiersAsync(string docTiers)
         {
-            throw new NotImplementedException();
+            return await _context.DocumentBonCommandes.Where(dbc => dbc.DocTiers == docTiers).ToListAsync();
         }
 
-        public Task<IReadOnlyCollection<DocumentBonCommande>> GetByDocTypeAsync(string docType)
+        public async Task<IReadOnlyCollection<DocumentBonCommande>> GetByDocTypeAsync(string docType)
         {
-            throw new NotImplementedException();
+            return await _context.DocumentBonCommandes.Where(dbc => dbc.DocType == docType).ToListAsync();
         }
     }
 }
