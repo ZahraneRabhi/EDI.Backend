@@ -1,0 +1,6 @@
+@EDI.Backend_HostAddress = http://localhost:5209
+
+GET {{EDI.Backend_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
