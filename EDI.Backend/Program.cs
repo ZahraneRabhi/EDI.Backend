@@ -1,6 +1,7 @@
 using EDI.Backend.Contracts;
 using EDI.Backend.Data;
 using EDI.Backend.Repositories;
+using EDI.Backend.Services;
 using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +12,10 @@ builder.Services.AddSqlServer<EdiDbContext>(builder.Configuration.GetConnectionS
 
 builder.Services.AddScoped(typeof(IAsyncRepository<>), typeof(BaseRepository<>));
 builder.Services.AddScoped<IDBCRepository, DBCRepository>();
+
+// OCR Service Configuration
+builder.Services.AddHttpClient();
+builder.Services.AddScoped<IOCRContract, OCRService>();
 
 // Add CORS policy
 builder.Services.AddCors(options =>
